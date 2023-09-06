@@ -21,6 +21,7 @@ class BlogView(generic.ListView):
     model = Blog
     template_name = 'website/blogs.html'
     context_object_name = "blogs_list"
+    paginate_by = 3
 
     def get_queryset(self):
         return Blog.objects.order_by("-id")
@@ -30,6 +31,7 @@ class ProjectView(generic.ListView):
     model = Project
     template_name = 'website/projects.html'
     context_object_name = "projects_list"
+    paginate_by = 3
 
     def get_queryset(self):
         return Project.objects.order_by("-id")

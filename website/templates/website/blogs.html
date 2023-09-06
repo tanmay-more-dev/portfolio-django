@@ -82,7 +82,7 @@
       </div>
       <div class="row">
         {% for blog in blogs_list %}
-       <div class="col-md-4">
+       <div class="col-md-4 my-4">
           <div class="card card-blog">
             <div class="card-img">
               <a href="{% url 'website:blog_detail' blog.id %}"><img src="{{blog.img.url}}" alt="" class="img-fluid"></a>
@@ -110,6 +110,25 @@
         {% endfor %}
       </div>
     </div>
+    <div class="mb-5">
+        <div class="my-4 d-flex align-items-center justify-content-center">
+            <ul class="step-links pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a href="?page=1" class="page-link border-primary">&laquo;</a></li>
+                    <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link border-primary">&larr;</a></li>
+                {% endif %}
+      
+                <li class="current page-item">
+                  <p class="page-link border-primary"><strong>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</strong></p>
+                </li>
+      
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link border-primary">&rarr;</a></li>
+                    <li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}" class="page-link border-primary">&raquo;</a></li>
+                {% endif %}
+              </ul>
+        </div>
+      </div>
   </section>
   <footer>
     <div class="container">
