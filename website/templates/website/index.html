@@ -47,8 +47,8 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#work">Work</a></li>
-          <li><a class="nav-link scrollto " href="#blog">Blog</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'website:projects' %}">Work</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'website:blogs' %}">Blog</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -264,55 +264,11 @@
             </div>
           </div>
           {% endfor %}
-          {% comment %} <div class="col-md-4">
-            <div class="work-box">
-              <a href="{% static 'website/assets/img/work-2.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                <div class="work-img">
-                  <img src="{% static 'website/assets/img/work-2.jpg' %}" alt="" class="img-fluid">
-                </div>
-              </a>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">A Business Website</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Web Design</span> / <span class="w-date">18 March 2023</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <a href="portfolio-details-2.html"> <span class="bi bi-plus-circle"></span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <a href="{% url 'website:projects' %}" class="button button-a p-3 button-rouded">See More</a>
           </div>
-          <div class="col-md-4">
-            <div class="work-box">
-              <!-- <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox"> -->
-                <div class="work-img">
-                  <div class="more-work"></div>
-                </div>
-              <!-- </a> -->
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">More to be uploaded soon</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Keep checking</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <a href="#"> <span class="bi bi-plus-circle"></span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div> {% endcomment %}
         </div>
       </div>
     </section><!-- End Portfolio Section -->
@@ -360,68 +316,11 @@
             </div>
          </div>
           {% endfor %}
-          <!-- <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a href="blog-single.html"><img src="{% static 'website/assets/img/post-2.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Web Design</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="{% static 'website/assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> 10 min
-                </div>
-              </div>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <a href="{% url 'website:blogs' %}" class="button button-a p-3 button-rouded">See More</a>
           </div>
-          <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a href="blog-single.html"><img src="{% static 'website/assets/img/post-3.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Web Design</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="{% static 'website/assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> 10 min
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </section><!-- End Blog Section -->

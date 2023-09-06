@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.8
+FROM python:alpine
 
 # Set environment variables for Python
 ENV PYTHONUNBUFFERED 1

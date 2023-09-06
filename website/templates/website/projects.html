@@ -23,6 +23,11 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'website/assets/css/style.css' %}" rel="stylesheet">
+  <style>
+    *{
+        scroll-behaviour: smooth;
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: DevFolio
@@ -47,8 +52,8 @@
           <li><a class="nav-link scrollto" href="{% url 'website:index' %}#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'website:index' %}#about">About</a></li>
           <li><a class="nav-link scrollto" href="{% url 'website:index' %}#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="{% url 'website:projects' %}">Work</a></li>
-          <li><a class="nav-link scrollto " href="{% url 'website:blogs' %}">Blog</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'website:projects' %}">Work</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'website:blogs' %}">Blog</a></li>
           <li><a class="nav-link scrollto" href="{% url 'website:index' %}#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -59,53 +64,50 @@
 
 <!-- ======== Blog ====== -->
 
-
-<main id="main">
-
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details" style="min-height: 80vh">
-      <div class="container">
-
-        <div class="row gy-4">
-
-          {% comment %} <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide">
-                  <img src="assets/img/work-1.jpg" alt="">
+ <!-- ======= Portfolio Section ======= -->
+ <section id="work" class="portfolio-mf sect-pt4 route">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title-box text-center">
+          <h3 class="title-a">
+            Portfolio
+          </h3>
+          <p class="subtitle-a">
+            Some of my work, you may like.
+          </p>
+          <div class="line-mf"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {% for project in projects_list %}
+      <div class="col-md-4">
+        <div class="work-box">
+            <div class="work-img">
+              <img src="{{project.img.url}}" alt="" class="img-fluid">
+            </div>
+          <div class="work-content">
+            <div class="row">
+              <div class="col-sm-8">
+                <h2 class="w-title">{{project.title}}</h2>
+                <div class="w-more">
+                  <span class="w-ctegory">{{project.category}}</span> / <span class="w-date">{{project.date}}</span>
                 </div>
               </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div> {% endcomment %}
-
-          <div class="col-lg-8">
-            <div class="portfolio-info mb-4">
-              <h3 class="pb-0 border-0">{{blog.title}}</h3>
-              <hr>
-              <ul>
-                <li><strong>Category</strong>: {{blog.category}}</li>
-                <li><strong>Author</strong>: {{blog.posted_by}}</li>
-                <li><strong>Date</strong>: {{blog.posted_on}}</li>
-              </ul>
-              <hr>
-              <p>
-                {{blog.content|safe}}
-              </p>
+              <div class="col-sm-4">
+                <div class="w-like">
+                  <a href="{% url 'website:project_detail' project.id %}"> <span class="bi bi-plus-circle"></span></a>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-lg-4">
-            <img src="{{blog.img.url}}" class="img-fluid">
-          </div>
-
-
         </div>
-
       </div>
-    </section>
-
-  </main>
-<!-- ======== End Blog ====== -->
+      {% endfor %}
+    </div>
+  </div>
+</section>
 <!-- ======= Footer ======= -->
 <footer>
     <div class="container">

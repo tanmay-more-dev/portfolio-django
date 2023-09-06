@@ -23,6 +23,11 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'website/assets/css/style.css' %}" rel="stylesheet">
+  <style>
+    *{
+        scroll-behaviour: smooth;
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: DevFolio
@@ -59,55 +64,54 @@
 
 <!-- ======== Blog ====== -->
 
-
-<main id="main">
-
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details" style="min-height: 80vh">
-      <div class="container">
-
-        <div class="row gy-4">
-
-          {% comment %} <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide">
-                  <img src="assets/img/work-1.jpg" alt="">
+   <!-- ======= Blog Section ======= -->
+   <section id="blog" class="blog-mf sect-pt4 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h3 class="title-a">
+              Blog
+            </h3>
+            <p class="subtitle-a">
+              My Own Experience and learnings
+            </p>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        {% for blog in blogs_list %}
+       <div class="col-md-4">
+          <div class="card card-blog">
+            <div class="card-img">
+              <a href="{% url 'website:blog_detail' blog.id %}"><img src="{{blog.img.url}}" alt="" class="img-fluid"></a>
+            </div>
+            <div class="card-body">
+              <div class="card-category-box">
+                <div class="card-category">
+                  <h6 class="category">{{ blog.category }}</h6>
                 </div>
               </div>
-              <div class="swiper-pagination"></div>
+              <h3 class="card-title"><a href="{% url 'website:blog_detail' blog.id %}">{{ blog.title }}</a></h3>
             </div>
-          </div> {% endcomment %}
-
-          <div class="col-lg-8">
-            <div class="portfolio-info mb-4">
-              <h3 class="pb-0 border-0">{{blog.title}}</h3>
-              <hr>
-              <ul>
-                <li><strong>Category</strong>: {{blog.category}}</li>
-                <li><strong>Author</strong>: {{blog.posted_by}}</li>
-                <li><strong>Date</strong>: {{blog.posted_on}}</li>
-              </ul>
-              <hr>
-              <p>
-                {{blog.content|safe}}
-              </p>
+            <div class="card-footer">
+              <div class="post-author">
+                <a href="#">
+                  <span class="author">{{ blog.posted_by }}</span>
+                </a>
+              </div>
+              <div class="post-date">
+                <span class="bi bi-clock"></span> {{ blog.posted_on }}
+              </div>
             </div>
           </div>
-          <div class="col-lg-4">
-            <img src="{{blog.img.url}}" class="img-fluid">
-          </div>
-
-
-        </div>
-
+       </div>
+        {% endfor %}
       </div>
-    </section>
-
-  </main>
-<!-- ======== End Blog ====== -->
-<!-- ======= Footer ======= -->
-<footer>
+    </div>
+  </section>
+  <footer>
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
