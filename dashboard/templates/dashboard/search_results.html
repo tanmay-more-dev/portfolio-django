@@ -1,0 +1,96 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+
+<h2 class="text-center text-dark mt-3">Search Results for &quot;{{query}}&quot;</h2>
+
+{% if not messages_list and not blogs_list and not projects_list %}
+<h3 class="text-danger text-bolder text-center">No results found.</h3>
+{% endif %}
+{% if messages_list %}
+<div class="p-2 table-responsive">
+<table class="table table-dark" style="margin-top: 2rem !important;">
+    <!-- <h2 class="m-4">Messages</h2> -->
+    <thead>
+      <tr>
+        <th scope="row">MESSAGES</th>
+      </tr>
+      <tr>
+        <th scope="col">NAME</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">SUBJECT</th>
+        <th scope="col">ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for message in messages_list %}
+            <tr>
+              <th scope="row"><a class="text-decoration-none text-white text-capitalize" href="{% url 'dashboard:message_detail' message.id %}">{{ message.name }} {% if message.seen == False %}<span class="rounded-pill text-white bg-success" style="font-size: 8px;padding: 2px;">NEW</span>{% endif %} </a></th>
+              <td>{{ message.email }}</td>
+              <td>{{ message.subject }}</td>
+              <td><a href="{% url 'dashboard:message_delete' message.id %}"><button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endif %}
+{% if projects_list %}
+  <div class="p-2 table-responsive">
+    <table class="table table-dark my-2" >
+      <!-- <h2 class="m-4">Messages</h2> -->
+      <thead>
+        <tr>
+            <th>PROJECTS</th>
+        </tr>
+        <tr>
+          <th scope="col">TITLE</th>
+          <th scope="col">CATEGORY</th>
+          <th scope="col">DATE</th>
+          <th scope="col">ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for project in projects_list %}
+              <tr>
+                <th scope="row"><a href="{% url 'dashboard:project_detail' project.id %}" class="text-decoration-none text-white text-capitalize">{{ project.title }}</a></th>
+                <td>{{ project.category }}</td>
+                <td>{{ project.date }}</td>
+                <td><a href="{% url 'dashboard:project_delete' project.id %}"><button class="btn btn-danger mx-1"><i class="fa fa-trash-o" aria-hidden="true"></i></button><a href="{% url 'dashboard:update_project' project.id %}"><button class="btn btn-warning mx-1 text-white"><i class="fa fa-pencil" aria-hidden="true"></i></button></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+{% if blogs_list %}
+  <div class="p-2 table-responsive">
+    <table class="table table-dark my-2" >
+      <!-- <h2 class="m-4">Messages</h2> -->
+      <thead class="">
+        <tr>
+          <th>BLOGS</th>
+        </tr> 
+        <tr>
+          <th scope="col">TITLE</th>
+          <th scope="col">CATEGORY</th>
+          <th scope="col">POSTED ON</th>
+          <th scope="col">POSTED BY</th>
+          <th scope="col">ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for blog in blogs_list %}
+              <tr>
+                <th scope="row"><a href="{% url 'dashboard:blog_detail' blog.id %}" class="text-decoration-none text-white text-capitalize">{{ blog.title }}</a></th>
+                <td>{{ blog.category }}</td>
+                <td>{{ blog.posted_on }}</td>
+                <td>{{ blog.posted_by }}</td>
+                <td><a href="{% url 'dashboard:blog_delete' blog.id %}"><button class="btn btn-danger mx-1"><i class="fa fa-trash-o" aria-hidden="true"></i></button><a href="{% url 'dashboard:update_blog' blog.id %}"><button class="btn btn-warning mx-1 text-white"><i class="fa fa-pencil" aria-hidden="true"></i></button></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+  
+{% endblock content %}

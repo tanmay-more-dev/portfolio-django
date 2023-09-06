@@ -1,0 +1,14 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="card w-75 m-auto" style="margin-top: 3rem !important;">
+    <div class="card-body">
+      <h5 class="card-title text-dark">{{ blog.title }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ blog.posted_on }} &bullet; {{ blog.posted_by }} &bullet; {{ blog.category }}</h6>
+      <hr>
+      <div class="text-center"><img src="{{blog.img.url}}" class="img-fluid w-50"></div>
+      <div class="text-dark">{{ blog.content|safe }}</div>
+      <!-- <a href="#" class="card-link">Card link</a> -->
+      <!-- <a href="#" class="card-link">Another link</a> -->
+    </div>
+  </div>
+{% endblock content %}

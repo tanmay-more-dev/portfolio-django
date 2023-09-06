@@ -1,0 +1,138 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tanmay's Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'website/assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'website/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'website/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'website/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'website/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'website/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'website/assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: DevFolio
+  * Updated: Jul 27 2023 with Bootstrap v5.3.1
+  * Template URL: devfolio-bootstrap-portfolio-html-template/
+  * Author: You.com
+  * License: license/
+  ======================================================== -->
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="sticky-top bg-dark d-block">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="{% url 'website:index' %}">Tanmay More</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="{% static 'website/assets/img/logo.png' %}" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="{% url 'website:index' %}#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'website:index' %}#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'website:index' %}#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'website:index' %}#work">Work</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'website:index' %}#blog">Blog</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'website:index' %}#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+<!-- ======== Blog ====== -->
+
+
+<main id="main">
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details" style="min-height: 80vh">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          {% comment %} <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                <div class="swiper-slide">
+                  <img src="assets/img/work-1.jpg" alt="">
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div> {% endcomment %}
+
+          <div class="col-lg-8">
+            <div class="portfolio-info mb-4">
+              <h3 class="pb-0 border-0">{{blog.title}}</h3>
+              <hr>
+              <ul>
+                <li><strong>Category</strong>: {{blog.category}}</li>
+                <li><strong>Author</strong>: {{blog.posted_by}}</li>
+                <li><strong>Date</strong>: {{blog.posted_on}}</li>
+              </ul>
+              <hr>
+              <p>
+                {{blog.content|safe}}
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <img src="{{blog.img.url}}" class="img-fluid">
+          </div>
+
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+<!-- ======== End Blog ====== -->
+<!-- ======= Footer ======= -->
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="copyright-box">
+            <p class="copyright">&copy; Copyright <strong>Tanmay More</strong>. All Rights Reserved</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'website/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'website/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'website/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'website/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'website/assets/vendor/typed.js/typed.umd.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'website/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

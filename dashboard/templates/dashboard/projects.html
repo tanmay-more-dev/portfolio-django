@@ -1,0 +1,57 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+    {% if messages %}
+  {% for message in messages %}
+  <div class="m-2 alert {{ message.tags }} alert-dismissible fade show" role="alert">{{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+{% endif %}
+<div class="p-2 table-responsive">
+  <table class="table table-dark my-2" >
+    <!-- <h2 class="m-4">Messages</h2> -->
+    <thead class="">
+      <tr>
+        <td><a href="{% url 'dashboard:add_project' %}" class="text-white btn bg-secondary" ><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Project</a></td>
+      </tr> 
+      <tr>
+        <th scope="col">TITLE</th>
+        <th scope="col">CATEGORY</th>
+        <th scope="col">DATE</th>
+        <th scope="col">ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for project in projects %}
+            <tr>
+              <th scope="row"><a href="{% url 'dashboard:project_detail' project.id %}" class="text-decoration-none text-white text-capitalize">{{ project.title }}</a></th>
+              <td>{{ project.category }}</td>
+              <td>{{ project.date }}</td>
+              <td><a href="{% url 'dashboard:project_delete' project.id %}"><button class="btn btn-danger mx-1"><i class="fa fa-trash-o" aria-hidden="true"></i></button><a href="{% url 'dashboard:update_project' project.id %}"><button class="btn btn-warning mx-1 text-white"><i class="fa fa-pencil" aria-hidden="true"></i></button></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+</div>
+<div class="mb-5">
+  <div class="my-2 d-flex align-items-center justify-content-center">
+    <ul class="step-links pagination">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a href="?page=1" class="page-link bg-dark bg-dark text-white border-0">&laquo;</a></li>
+            <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link bg-dark text-white border-0">&larr;</a></li>
+        {% endif %}
+
+        <li class="current page-item">
+           <p class="page-link bg-dark text-white border-0"><strong>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</strong></p>
+        </li>
+
+        {% if page_obj.has_next %}
+            <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link bg-dark text-white border-0">&rarr;</a></li>
+            <li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}" class="page-link bg-dark text-white border-0">&raquo;</a></li>
+        {% endif %}
+      </ul>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="card w-75 m-auto" style="margin-top: 3rem !important;">
+    <div class="card-body">
+      <h5 class="card-title text-dark">{{ message.subject }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ message.name }} &bullet; {{ message.email }}</h6>
+      <hr>
+      <p class="card-text text-dark">{{ message.message }}</p>
+      <!-- <a href="#" class="card-link">Card link</a> -->
+      <!-- <a href="#" class="card-link">Another link</a> -->
+    </div>
+  </div>
+{% endblock content %}
